@@ -13,6 +13,41 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+		const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cory's Website</title>
+	<style>
+		body {
+			background-color: #1a1a1a;
+			color: #e0e0e0;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+			line-height: 1.6;
+			padding: 2rem;
+			margin: 0;
+		}
+		h1 {
+			color: #ffffff;
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+		}
+		p {
+			font-size: 1.25rem;
+		}
+	</style>
+</head>
+<body>
+	<h1>Cory's Website</h1>
+	<p>Lovely to see you here! 😘</p>
+</body>
+</html>`;
+
+		return new Response(html, {
+			headers: {
+				'Content-Type': 'text/html; charset=utf-8',
+			},
+		});
 	},
 } satisfies ExportedHandler<Env>;
